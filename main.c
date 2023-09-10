@@ -7,7 +7,8 @@ int main()
 
     int arraySize;
     int i;
-    int *counter =0;
+    int *counter;
+    *counter =0;
     printf("input array size: ");
     scanf("%d", &arraySize);
 
@@ -20,13 +21,14 @@ int main()
         printf("%d ", arr[i]);
     }
     printf("\n");
-    MergeInsertSort(arr, 0, arraySize-1, 5, &counter);
+    MergeInsertSort(arr, 0, arraySize-1, 5, counter);
 
+    printf("Key comparisons:");
     printf("Sorted: \n");
     for(i=0;i<arraySize;i++){
         printf("%d ",arr[i]);
     }
-    printf("Key comparisions: %d", *counter);
+
 
 }
 
@@ -34,13 +36,13 @@ void MergeInsertSort (int *arr, int first, int last, int S, int *counter){
     int size = last-first+1;
 
     if(size<S){
-        InsertionSort(arr, first, last, &counter);
+        InsertionSort(arr, first, last, counter);
     }
     else{
         int mid = (first+last)/2;
-        MergeInsertSort(arr, first, mid, S, &counter);
-        MergeInsertSort(arr, mid+1, last, S, &counter);
-        Merge(arr, first, last, mid, &counter);
+        MergeInsertSort(arr, first, mid, S, counter);
+        MergeInsertSort(arr, mid+1, last, S, counter);
+        Merge(arr, first, last, mid, counter);
     }
 }
 
