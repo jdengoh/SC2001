@@ -31,26 +31,27 @@ def swap(numlist, num1, num2):
 
 
 def MergeSort(numlist, first, last):
+    comp = 0
     mid = (last+first) // 2
     if (last-first <= 0):
-            return
+            return comp
 
     elif (last-first > 1):
-        MergeSort(numlist, first, mid)
-        MergeSort(numlist, mid+1, last)
-
-    numlist = Merge(numlist, first, last)
+        comp = MergeSort(numlist, first, mid) + MergeSort(numlist, mid+1, last)
+    
+    return (Merge(numlist, first, last) + comp)
 
 
 def Merge(numlist, first, last):
-
+    
+    keyComp = 0
     mid = (first+last)//2
     n = first
     m = mid+1
 
 
     if (last-first <= 0 ):
-        return
+        return 0
 
     # sub-array size
     size1 = m-first
@@ -75,18 +76,20 @@ def Merge(numlist, first, last):
 
 
     while (ind1<size1 and ind2<size2): # while both halfs are not empty
-
+        
         # case 1: 2nd half's first element smaller
         if arr1[ind1]>arr2[ind2]:
             numlist[n]=arr2[ind2]
-            n += 1
             ind2 += 1      # move 2nd half's pointer forward
             #print(numlist)
         # case 2: 1st half's first element smaller
         elif (arr1[ind1]<=arr2[ind2]):
             numlist[n]=arr1[ind1]
-            n += 1
             ind1 += 1      # move 1st half's pointer forward
+
+        n += 1
+        keyComp += 1
+
             #print(numlist)
         # case 3: 1st half and 2nd half's first element are EQUAL
         # else:
@@ -107,7 +110,7 @@ def Merge(numlist, first, last):
         n += 1
         ind2 += 1
     #print(numlist)   
-    return
+    return keyComp
 
 # def MergeInsertSort (numlist, first, last, S):
 
@@ -135,8 +138,8 @@ def Merge(numlist, first, last):
 
 def main():
 
-    #arr = [10, 4, 9, 5, 9, 6, 3, 3, 1, 7]
-    arr = randgen(1, 20, 20)
+    #arr = [14, 40, 31, 28, 3, 15, 17, 51]
+    arr = randgen(1, 10000000, 10000000)
 
     arrcopy = list(arr)
     #print (arr)
@@ -146,11 +149,12 @@ def main():
     # InsertionSort(arr, 100)
 
     ##### Merge Sort #####
-    arrcopy.sort()
-    print(arrcopy)
-    print(arr)
-    MergeSort(arr, 0, len(arr)-1)
-    print(arr)
+    #arrcopy.sort()
+    #print(arrcopy)
+    #print(arr)
+    numOfComp=MergeSort(arr, 0, len(arr)-1)
+    print("number of comp = " + str(numOfComp))
+    #print(arr)
     print(len(arr))
 
   
