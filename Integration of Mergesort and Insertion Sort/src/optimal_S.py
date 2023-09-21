@@ -33,8 +33,8 @@ for n in [1000, 10000, 100000, 1000000, 10000000]:
                 cpu_end = process_time()
                 cpuTime += cpu_end-cpu_start
             
-            avg_keyComp = keyComp/5
-            avg_cpuTime = cpuTime/5
+            avg_keyComp = keyComp/3
+            avg_cpuTime = cpuTime/3
 
             writer.writerow([n, S, avg_keyComp, avg_cpuTime])
             print("Completed run for s = " + str(S))
