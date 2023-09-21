@@ -14,7 +14,7 @@ for n in [1000, 10000, 100000, 1000000, 10000000]:
         writer = csv.writer(f)
         writer.writerow(header)
 
-        for S in range(5, 20, 1):
+        for S in range(1, 16, 1):
             print("next operation")
             keyComp = 0
             cpuTime = 0

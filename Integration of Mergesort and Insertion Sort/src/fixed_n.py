@@ -16,7 +16,7 @@ with open("Integration of Mergesort and Insertion Sort/csv_files/fixed_n_results
     writer.writerow(header)
 
     #for n in range(1000, 10000000, 499995):
-    for S in range(5, 51, 1):
+    for S in range(1, 51, 1):
         print("next operation")
         keyComp = 0
         cpuTime = 0
