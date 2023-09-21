@@ -3,8 +3,8 @@ from randomGenerator import randgen
 
 def InsertionSort(numlist, first, last):
     keyComp = 0
-    for i in range(first, last+1):
-        for j in range (i, 0, -1):
+    for i in range(first, (last+1)):
+        for j in range (i, first, -1):
             keyComp += 1
             if (numlist[j]<numlist[j-1]):
                 temp = numlist[j]
@@ -95,6 +95,7 @@ def MergeInsertSort (numlist, first, last, S):
     
     if (size<=S):
         comp += InsertionSort(numlist, first, last)
+        #print("insertion sort comp = " + str(comp))
         return comp
     
     else:
@@ -112,11 +113,12 @@ def MergeInsertSort (numlist, first, last, S):
 def main():
 
     #arr = [14, 40, 31, 28, 3, 15, 17, 51]
-    arr = randgen(1, 10000000, 10000000)
+    arr = []
+    randgen(arr, 3000, 3000)
     #arr = randgen(1, 100, 10)
     print('hi')
     
-    #arrcopy = list(arr)
+    arrcopy = list(arr)
     #print (arrcopy)
     #print(len(arr))
 

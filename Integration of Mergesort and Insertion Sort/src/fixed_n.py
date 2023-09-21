@@ -7,18 +7,16 @@ from sortingAlgo import MergeInsertSort
 from sortingAlgo import MergeSort
 from sortingAlgo import Merge
 
-header = ["n", "Avg Key Comp", "Avg Processing Time"]
+header = ["S", "Avg Key Comp", "Avg Processing Time"]
 
-fixedS = 50
+fixedN = 1000000
 
-
-
-with open("Integration of Mergesort and Insertion Sort/csv_files/fixed_S_results.csv", "w", newline="") as f:
+with open("Integration of Mergesort and Insertion Sort/csv_files/fixed_n_results.csv", "w", newline="") as f:
     writer = csv.writer(f)
     writer.writerow(header)
 
-    for n in range(1000, 10000000, 499995):
-    #for n in range(1000, 5000, 1000):
+    #for n in range(1000, 10000000, 499995):
+    for S in range(5, 51, 1):
         print("next operation")
         keyComp = 0
         cpuTime = 0
@@ -26,13 +24,12 @@ with open("Integration of Mergesort and Insertion Sort/csv_files/fixed_S_results
         for i in range(5):
 
             numlist = []
-            randgen(numlist, 10000000, n)
-            #print(numlist)
+            randgen(numlist, 10000000, fixedN)
+            
             # start timer
             cpu_start = process_time()
 
-            keyComp += MergeInsertSort(numlist, 0, n-1, fixedS)
-            #print(numlist)
+            keyComp += MergeInsertSort(numlist, 0, fixedN-1, S)
 
             # end timer
             cpu_end = process_time()
@@ -41,9 +38,5 @@ with open("Integration of Mergesort and Insertion Sort/csv_files/fixed_S_results
         avg_keyComp = keyComp/5
         avg_cpuTime = cpuTime/5
 
-        writer.writerow([n, avg_keyComp, avg_cpuTime])
-        print("Completed run for n = " + str(n))
-
-
-
-
+        writer.writerow([S, avg_keyComp, avg_cpuTime])
+        print("Completed run for s = " + str(S))
