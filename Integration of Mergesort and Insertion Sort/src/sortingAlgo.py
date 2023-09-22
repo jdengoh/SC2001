@@ -110,31 +110,31 @@ def MergeInsertSort (numlist, first, last, S):
         return (Merge(numlist, first, last) + comp)
 
 
-def main():
+# def main():
 
-    #arr = [14, 40, 31, 28, 3, 15, 17, 51]
-    arr = []
-    randgen(arr, 3000, 3000)
-    #arr = randgen(1, 100, 10)
-    print('hi')
+#     #arr = [14, 40, 31, 28, 3, 15, 17, 51]
+#     arr = []
+#     randgen(arr, 3000, 3000)
+#     #arr = randgen(1, 100, 10)
+#     print('hi')
     
-    arrcopy = list(arr)
-    #print (arrcopy)
-    #print(len(arr))
+#     arrcopy = list(arr)
+#     #print (arrcopy)
+#     #print(len(arr))
 
-    ##### Insertion sort #####
-    count = MergeInsertSort(arr, 0, len(arr)-1, 5)
+#     ##### Insertion sort #####
+#     count = MergeInsertSort(arr, 0, len(arr)-1, 5)
 
-    ##### Merge Sort #####
-    #arrcopy.sort()
-    #print(arrcopy)
-    #print(arr)
-    print("number of comp for Insertion Sort= " + str(count))
+#     ##### Merge Sort #####
+#     #arrcopy.sort()
+#     #print(arrcopy)
+#     #print(arr)
+#     print("number of comp for Insertion Sort= " + str(count))
     
-    print(arr)
-    numOfComp=MergeSort(arr, 0, len(arr)-1)
-    print("number of comp Merge Sort= " + str(numOfComp))
-    print(len(arr))
+#     print(arr)
+#     numOfComp=MergeSort(arr, 0, len(arr)-1)
+#     print("number of comp Merge Sort= " + str(numOfComp))
+#     print(len(arr))
 
-if __name__=="__main__":
-    main()
+# if __name__=="__main__":
+#     main()
