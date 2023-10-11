@@ -176,6 +176,7 @@ public class adjmatrix {
 	
 	
 	public static void main(String[] args) {
+		/*
 		E=0;
 		int i=5;
 		int j=10;
@@ -204,7 +205,57 @@ public class adjmatrix {
 		
 		System.out.printf("ADJ_Matrix with Array Queue (FindMin Unordered) (Operations = %d, Time = %d ns)\n",count1,D1_t);
 		System.out.printf("ADJ_LinkList with Min_Heap Queue                (Operations = %d, Time = %d ns)\n",count2, D2_t);
+		*/
+		int start = 1000; //max 100
+		int startE = 0;
+		int source =0;
+		int i;
 		
+		
+		
+		
+		try {
+            
+			PrintWriter output = new PrintWriter("big_V.txt");
+			output.println("V,E,Array Queue Operations,Array Queue Runtime,Min_Heap Queue Operations,Min_Heap Queue Runtime");
+			
+			for(int V =1000;V<=10000;V+=1000) {
+				int MaxE = V*(V - 1);
+				int EIncrement = (V == 1000) ? 49950 : (V*(V-1))/20;
+				//startE = MaxE;
+				for(int E=startE;E<=MaxE;E+=EIncrement)
+				{
+					int [][] matrix = createRandomGraph(V,E);
+					//printGrapgh(matrix);
+					
+					count1 =0;
+					long D_arrS = System.nanoTime();
+					int [] ans = D_Array(matrix,source);
+					long D_arrE = System.nanoTime();
+					long D1_t = D_arrE - D_arrS;
+					//printTree(ans);
+					
+					LinkList [] arrLL = ArrayLL(matrix);
+					long D_LLS = System.nanoTime();
+					int []ans2 = D_LinkList(arrLL,source);
+					long D_LLE = System.nanoTime();
+					long D2_t = D_LLE - D_LLS;
+					//printTree(ans2);
+					
+					System.out.printf("V = %d, E = %d\n", V,E);
+					
+					System.out.printf("ADJ_Matrix with Array Queue (FindMin Unordered) (Time= %d ns)\n",D1_t);
+					System.out.printf("ADJ_LinkList with Min_Heap Queue                (Time= %d ns)\n\n", D2_t);
+					output.println(V + "," + E + "," + count1 + "," + D1_t + "," +count2 + "," +D2_t);
+				}
+			}
+			
+			output.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+			
+		
+        }
 
 	}
 }
